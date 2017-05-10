@@ -1,0 +1,13 @@
+query TopStories($count: Int!) {
+    topStories(first: $count) {
+        id
+        time
+        title
+        descendants
+        score
+        by {
+            id
+        }
+        url
+    }
+}
