@@ -4,17 +4,19 @@ import {API_URL} from "./apiConf"
 import {DocumentNode} from "graphql"
 const topStoriesQuery: DocumentNode = require("./topStories.graphql")
 
-export enum StoryType {
-    TopStories,
-    BestStories
+export const TopStoryQuery = "topStories"
+export const BestStoryQuery = "bestStories"
+
+export type StoryQuery = typeof TopStoryQuery | typeof BestStoryQuery
+
+const queries = {
+    [TopStoryQuery]: topStoriesQuery,
+    [BestStoryQuery]: topStoriesQuery
 }
+
 
 export default class DataApi {
     private readonly client: ApolloClient
-    private storyTypes: Map<StoryType, DocumentNode> = new Map([
-        [StoryType.TopStories, topStoriesQuery],
-        // [StoryType.TopStories, topStoriesQuery],
-    ])
 
     constructor() {
         const networkInterface = createNetworkInterface({uri: API_URL + "/graphql"})
@@ -25,14 +27,15 @@ export default class DataApi {
         })
     }
 
-    public stories(storyType: StoryType): Promise<Story[]> {
+    public stories(storyType: StoryQuery): Promise<Story[]> {
+        const storyType2 = queries[storyType]
         const options: WatchQueryOptions = {
-            query: topStoriesQuery,
+            query: storyType2,
             variables: {count: 100}
         }
 
         return this.client.query(options)
-            .then((response: ApolloQueryResult<QueryType>) => response.data.topStories)
+            .then((response: ApolloQueryResult<QueryType>) => response.data[storyType])
             .catch(error => console.error(error))
 
     }

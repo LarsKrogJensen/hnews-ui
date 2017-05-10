@@ -1,5 +1,5 @@
 import {action, observable} from "mobx"
-import DataApi, {StoryType} from "../api/DataApi"
+import DataApi, {TopStoryQuery} from "../api/DataApi"
 import {Story} from "../api/typings"
 import {autobind} from "core-decorators"
 export default class MainStore {
@@ -27,7 +27,7 @@ export class SectionStore {
     }
 
     public load(api: DataApi) {
-        api.stories(StoryType.TopStories)
+        api.stories(TopStoryQuery)
             .then(result => this.handleResponse(result))
     }
 
