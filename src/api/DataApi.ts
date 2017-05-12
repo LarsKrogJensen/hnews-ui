@@ -27,15 +27,14 @@ export default class DataApi {
         })
     }
 
-    public stories(storyType: StoryQuery): Promise<Story[]> {
-        const storyType2 = queries[storyType]
+    public stories(query: StoryQuery): Promise<Story[]> {
         const options: WatchQueryOptions = {
-            query: storyType2,
+            query: queries[query],
             variables: {count: 100}
         }
 
         return this.client.query(options)
-            .then((response: ApolloQueryResult<QueryType>) => response.data[storyType])
+            .then((response: ApolloQueryResult<QueryType>) => response.data[query])
             .catch(error => console.error(error))
 
     }

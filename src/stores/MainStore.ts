@@ -27,13 +27,20 @@ export class SectionStore {
     }
 
     public load(api: DataApi) {
+        this.loading = true
         api.stories(TopStoryQuery)
             .then(result => this.handleResponse(result))
+            .then( () => this.setLoading(false))
     }
 
     @action
     private handleResponse(result: Story[]) {
         this.stories = result
+    }
+
+    @action
+    private setLoading(loading: boolean) {
+        this.loading = loading
     }
 }
 
