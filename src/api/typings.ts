@@ -2,10 +2,20 @@
 
 export interface QueryType {
   topStories: Array<Story> | null;
+  newStories: Array<Story> | null;
+  bestStories: Array<Story> | null;
   story: Story | null;
 }
 
 export interface TopStoriesQueryTypeArgs {
+  first: number | null;
+}
+
+export interface NewStoriesQueryTypeArgs {
+  first: number | null;
+}
+
+export interface BestStoriesQueryTypeArgs {
   first: number | null;
 }
 
@@ -32,7 +42,7 @@ export interface Comment {
   text: string | null;
   time: Long | null;
   comments: Array<Comment> | null;
-  by: User;
+  by: User | null;
 }
 
 export interface User {

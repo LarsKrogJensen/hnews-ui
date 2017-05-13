@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {Menu, Input} from 'semantic-ui-react'
-import {RouteComponentProps} from "react-router"
+import {RouteComponentProps, withRouter} from "react-router"
 
 
 const logo = require("../assets/logo.svg")
@@ -29,8 +29,7 @@ class AppHeader extends React.Component<IAppHeaderProps, IAppHeaderState> {
                 <Menu pointing>
                     <Menu.Item name='top' active={location.pathname === '/top'} onClick={this.handleItemClick}/>
                     <Menu.Item name='best' active={location.pathname === '/best'} onClick={this.handleItemClick}/>
-                    <Menu.Item name='ask' active={location.pathname === '/ask'} onClick={this.handleItemClick}/>
-                    <Menu.Item name='jobs' active={location.pathname === '/jobs'} onClick={this.handleItemClick}/>
+                    <Menu.Item name='new' active={location.pathname === '/new'} onClick={this.handleItemClick}/>
                     <Menu.Menu position='right'>
                         <Menu.Item>
                             <Input icon='search' placeholder='Search...'/>
@@ -46,9 +45,9 @@ class AppHeader extends React.Component<IAppHeaderProps, IAppHeaderState> {
         this.props.history.push(`/${name}`)
     }
 
-    
 }
 
-// const AppHeaderWithRouter: React.ComponentClass<IAppHeaderProps> = withRouter(AppHeader)
+const AppHeaderWithRouter: React.ComponentClass<IAppHeaderProps> = withRouter(AppHeader)
+export default AppHeaderWithRouter
 
-export default AppHeader
+// export default AppHeader

@@ -1,0 +1,11 @@
+fragment StoryItem on Story {
+    id
+    time
+    title
+    descendants
+    score
+    by {
+        id
+    }
+    url
+}

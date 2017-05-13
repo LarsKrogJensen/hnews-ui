@@ -11,19 +11,20 @@ interface IStoryItemProps {
 
 export default class StoryItem extends React.Component<IStoryItemProps, {}> {
     public render() {
-        const story = this.props.story;
+        const story = this.props.story
         return (
             <div className="story">
                 <div className="score">
                     {story.score}
                 </div>
                 <div className="content">
-                    <div className="title">{story.title}</div>
+                    {/*<div className="title">{story.title}</div>*/}
+                    <a className="title" href={story.url || ""} target="_blank">{story.title}</a>
                     <div className="footer">
                         <div className="user">by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink></div>
                         <div className="comment">
                             <NavLink to={`/story/${story.id}`}>
-                                <Icon name="comments" />{story.descendants} comments
+                                <Icon name="comments"/>{story.descendants} comments
                             </NavLink>
                         </div>
                     </div>

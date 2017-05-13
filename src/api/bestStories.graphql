@@ -1,0 +1,6 @@
+#import "./storyFragment.graphql"
+query BestStories($count: Int!) {
+    bestStories(first: $count) {
+       ...StoryItem
+    }
+}

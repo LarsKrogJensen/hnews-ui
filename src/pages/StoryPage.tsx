@@ -73,7 +73,7 @@ class StoryPage extends React.Component<IStoryPageProps, {}> {
     }
 }
 
-const StoryPageWithData2: React.StatelessComponent<IStoryPageProps> = props => {
+const StoryPageWithData: React.StatelessComponent<IStoryPageProps> = props => {
     const Wrapped = graphql(storyQuery,
         {
             options: {
@@ -89,4 +89,4 @@ const StoryPageWithData2: React.StatelessComponent<IStoryPageProps> = props => {
     )
 }
 
-export default StoryPageWithData2
+export default StoryPageWithData
