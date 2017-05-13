@@ -2,10 +2,15 @@
 
 export interface QueryType {
   topStories: Array<Story> | null;
+  story: Story | null;
 }
 
 export interface TopStoriesQueryTypeArgs {
   first: number | null;
+}
+
+export interface StoryQueryTypeArgs {
+  id: string;
 }
 
 export interface Story {

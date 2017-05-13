@@ -1,25 +1,32 @@
-import {action, observable} from "mobx"
 import DataApi, {TopStoryQuery} from "../api/DataApi"
 import {Story} from "../api/typings"
-import {autobind} from "core-decorators"
-export default class MainStore {
 
+
+export default class MainStore {
     public topStories: SectionStore
 
+    public stories: Map<string, Story> = new Map()
     private readonly api: DataApi
 
     constructor(api: DataApi) {
         this.api = api
         this.topStories = new SectionStore(api)
     }
+
+
+    public story(id: string) {
+        this.api.story(id).then(result => this.handleStoryResponse(result))
+    }
+
+    private handleStoryResponse(story: Story) {
+        this.stories.set(story.id, story)
+    }
 }
 
 
 export class SectionStore {
-    @observable
     public stories: Story[] = []
 
-    @observable
     public loading: boolean = false
 
     constructor(api: DataApi) {
@@ -30,15 +37,13 @@ export class SectionStore {
         this.loading = true
         api.stories(TopStoryQuery)
             .then(result => this.handleResponse(result))
-            .then( () => this.setLoading(false))
+            .then(() => this.setLoading(false))
     }
 
-    @action
     private handleResponse(result: Story[]) {
         this.stories = result
     }
 
-    @action
     private setLoading(loading: boolean) {
         this.loading = loading
     }

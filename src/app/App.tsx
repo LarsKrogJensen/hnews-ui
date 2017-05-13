@@ -6,6 +6,7 @@ import TopPage from "../pages/TopPage"
 import BestPage from "../pages/BestStories"
 import AskPage from "../pages/AskPage"
 import JobPage from "../pages/JobPage"
+import StoryPage from "../pages/StoryPage"
 
 interface IAppProps {
     // intenionally left empty
@@ -26,16 +27,9 @@ export class App extends React.Component<IAppProps, any> {
                     <Route path="/best" component={BestPage}/>
                     <Route path="/ask" component={AskPage}/>
                     <Route path="/jobs" component={JobPage}/>
+                    <Route path="/story/:id" component={StoryPage}/>
                 </Switch>
-                {this.renderDevTool()}
             </div>
         )
     }
-
-    private renderDevTool() {
-        if (process.env.NODE_ENV !== 'production') {
-            const DevTools = require('mobx-react-devtools').default
-            return (<DevTools />)
-        }
-    };
 }

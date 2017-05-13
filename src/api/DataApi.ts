@@ -3,6 +3,7 @@ import {QueryType, Story} from "./typings"
 import {API_URL} from "./apiConf"
 import {DocumentNode} from "graphql"
 const topStoriesQuery: DocumentNode = require("./topStories.graphql")
+const storyQuery: DocumentNode = require("./fullStory.graphql")
 
 export const TopStoryQuery = "topStories"
 export const BestStoryQuery = "bestStories"
@@ -35,6 +36,18 @@ export default class DataApi {
 
         return this.client.query(options)
             .then((response: ApolloQueryResult<QueryType>) => response.data[query])
+            .catch(error => console.error(error))
+
+    }
+
+    public story(id: string): Promise<Story> {
+        const options: WatchQueryOptions = {
+            query: storyQuery,
+            variables: {id}
+        }
+
+        return this.client.query(options)
+            .then((response: ApolloQueryResult<QueryType>) => response.data.story)
             .catch(error => console.error(error))
 
     }

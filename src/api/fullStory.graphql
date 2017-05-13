@@ -1,0 +1,33 @@
+query FullStory($id: String!) {
+    story(id: $id) {
+        id
+        time
+        title
+        descendants
+        score
+        by {
+            id
+        }
+        url
+        comments {
+            id
+            text
+            time
+            comments {
+                id
+                text
+                time
+                comments {
+                    id
+                    text
+                    time
+                    comments {
+                        id
+                        text
+                        time
+                    }
+                }
+            }
+        }
+    }
+}

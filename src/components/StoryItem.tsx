@@ -22,7 +22,7 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
                     <div className="footer">
                         <div className="user">by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink></div>
                         <div className="comment">
-                            <NavLink to={`/comments/${story.id}`}>
+                            <NavLink to={`/story/${story.id}`}>
                                 <Icon name="comments" />{story.descendants} comments
                             </NavLink>
                         </div>

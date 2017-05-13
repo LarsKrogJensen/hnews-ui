@@ -22,9 +22,10 @@ module.exports = {
             'react',
             'react-dom',
             'react-router',
-            'mobx',
-            'mobx-react',
-            'mobx-react-router'
+            'semantic-ui-react',
+            'semantic-ui-css',
+            'react-apollo',
+            'apollo-client'
         ]
     },
 
@@ -117,22 +118,22 @@ module.exports = {
         ]
     },
     plugins: [
-        // new webpack.LoaderOptionsPlugin({
-        //     options: {
-        //         context: sourcePath,
-        //         postcss: [
-        //             require('postcss-import')({addDependencyTo: webpack}),
-        //             require('postcss-url')(),
-        //             require('postcss-cssnext')(),
-        //             require('postcss-reporter')(),
-        //             require('postcss-browser-reporter')({disabled: isProduction})
-        //         ],
-        //         tslint: {
-        //             emitErrors: true,
-        //             failOnHint: true
-        //         }
-        //     }
-        // }),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                context: sourcePath,
+                // postcss: [
+                //     require('postcss-import')({addDependencyTo: webpack}),
+                //     require('postcss-url')(),
+                //     require('postcss-cssnext')(),
+                //     require('postcss-reporter')(),
+                //     require('postcss-browser-reporter')({disabled: isProduction})
+                // ],
+                // tslint: {
+                //     emitErrors: true,
+                //     failOnHint: true
+                // }
+            }
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             filename: 'vendor.bundle.js',

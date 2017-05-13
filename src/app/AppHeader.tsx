@@ -43,7 +43,7 @@ class AppHeader extends React.Component<IAppHeaderProps, IAppHeaderState> {
     }
 
     private handleItemClick = (e, { name }) => {
-        this.props.history.push(name)
+        this.props.history.push(`/${name}`)
     }
 
     
