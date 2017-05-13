@@ -17,7 +17,7 @@ class TopPage extends React.Component<ITopPageProps, {}> {
     public render() {
 
         const data: any = this.props["data"]
-        const loading: boolean = data.loading;
+        const loading: boolean = data.loading
         const stories: Story[] = data.topStories || []
 
         const items = stories.map(story => (
@@ -31,7 +31,7 @@ class TopPage extends React.Component<ITopPageProps, {}> {
             <div style={{padding: 16}}>
                 <Loader active={loading} inline='centered'/>
                 <Feed>
-                {items}
+                    {items}
                 </Feed>
             </div>
         )
