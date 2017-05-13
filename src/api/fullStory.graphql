@@ -13,18 +13,22 @@ query FullStory($id: String!) {
             id
             text
             time
+            by {id}
             comments {
                 id
                 text
                 time
+                by {id}
                 comments {
                     id
                     text
                     time
+                    by {id}
                     comments {
                         id
                         text
                         time
+                        by {id}
                     }
                 }
             }

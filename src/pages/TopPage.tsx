@@ -1,7 +1,5 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
-import {STORE_MAIN} from "../constants/stores"
-import MainStore from "../stores/MainStore"
 import {Feed, Icon, Loader, Divider} from 'semantic-ui-react'
 import StoryItem from "../components/StoryItem"
 import {DocumentNode} from "graphql"

@@ -32,6 +32,7 @@ export interface Comment {
   text: string | null;
   time: Long | null;
   comments: Array<Comment> | null;
+  by: User;
 }
 
 export interface User {

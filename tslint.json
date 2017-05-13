@@ -5,6 +5,7 @@
         "max-line-length": {
             "options": [120]
         },
+        "interface-name": false,
         "max-classes-per-file":  [true, 5],
         "ordered-imports": false,
         "arrow-parens": false,
