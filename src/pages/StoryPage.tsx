@@ -1,22 +1,26 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
-import graphql from "react-apollo/lib/graphql"
+import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {Story, Comment as CommentItem} from "../api/typings"
 import {Loader, Header, Comment} from "semantic-ui-react"
 import * as moment from "moment"
 const storyQuery: DocumentNode = require("../api/fullStory.graphql")
 
 
+interface IStoryProvider {
+    story: Story
+}
+
 interface IStoryPageProps extends RouteComponentProps<any> {
-    // search store injected
+    data: GraphQLDataProps & IStoryProvider
 }
 
 class StoryPage extends React.Component<IStoryPageProps, {}> {
 
     public render() {
-        const data = this.props["data"]
-        const loading: boolean = data.loading
+        const data = this.props.data
+        const loading = data.loading
         const story: Story = data.story
 
         return (

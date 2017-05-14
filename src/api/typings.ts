@@ -4,7 +4,11 @@ export interface QueryType {
   topStories: Array<Story> | null;
   newStories: Array<Story> | null;
   bestStories: Array<Story> | null;
+  askStories: Array<Story> | null;
+  showStories: Array<Story> | null;
+  jobStories: Array<Story> | null;
   story: Story | null;
+  search: Array<Story> | null;
 }
 
 export interface TopStoriesQueryTypeArgs {
@@ -19,8 +23,24 @@ export interface BestStoriesQueryTypeArgs {
   first: number | null;
 }
 
+export interface AskStoriesQueryTypeArgs {
+  first: number | null;
+}
+
+export interface ShowStoriesQueryTypeArgs {
+  first: number | null;
+}
+
+export interface JobStoriesQueryTypeArgs {
+  first: number | null;
+}
+
 export interface StoryQueryTypeArgs {
   id: string;
+}
+
+export interface SearchQueryTypeArgs {
+  query: string;
 }
 
 export interface Story {

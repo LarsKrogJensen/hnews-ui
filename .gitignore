@@ -7,3 +7,4 @@ build
 dist
 .idea
 /src/api/apiConf.ts
+!/src/api/apiConf.ts

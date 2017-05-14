@@ -1,0 +1,6 @@
+#import "./storyFragment.graphql"
+query Search($query: String!) {
+    search(query: $query) {
+       ...StoryItem
+    }
+}

@@ -1,6 +1,7 @@
 import * as React from 'react'
-import {Menu, Input, Search} from 'semantic-ui-react'
+import {Menu} from 'semantic-ui-react'
 import {RouteComponentProps, withRouter} from "react-router"
+import SearchInput from "../pages/SearchView"
 const logo = require("../assets/logo.png")
 
 interface IAppHeaderProps {
@@ -9,8 +10,7 @@ interface IAppHeaderProps {
 class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<any>, {}> {
 
     public render() {
-        const {location} = this.props
-        console.log("Path: " + location.pathname)
+        const location = this.props.location
 
         return (
             <div className="app-header">
@@ -23,7 +23,7 @@ class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<an
                     <Menu.Item name='ask' active={location.pathname === '/ask'} onClick={this.handleItemClick}/>
                     <Menu.Item name='job' active={location.pathname === '/job'} onClick={this.handleItemClick}/>
                 </Menu>
-                <Search icon='search' placeholder='Search...' className="app-search"/>
+                <SearchInput />
             </div>
         )
     }
