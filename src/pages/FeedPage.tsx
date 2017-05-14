@@ -7,12 +7,13 @@ import FeedView from "../components/FeedView"
 
 interface IFeedPageProps extends RouteComponentProps<void> {
     feed: string
+    data: GraphQLDataProps
 }
 
 export default class FeedPage extends React.Component<IFeedPageProps, {}> {
     public render() {
 
-        const data: GraphQLDataProps = this.props["data"]
+        const data: GraphQLDataProps = this.props.data
         const loading: boolean = data.loading
         const stories: Story[] = data[this.props.feed] || []
 

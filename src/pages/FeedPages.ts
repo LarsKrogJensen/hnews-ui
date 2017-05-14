@@ -1,5 +1,5 @@
 import {DocumentNode} from "graphql"
-import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
+import graphql from "react-apollo/lib/graphql"
 import FeedPage from "./FeedPage"
 const topStoriesQuery: DocumentNode = require("../api/topStories.graphql")
 const newStoriesQuery: DocumentNode = require("../api/newStories.graphql")
