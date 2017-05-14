@@ -4,34 +4,64 @@
 @layout-body-background: white;
 @primary-color: #00C1DE;
 
+html, body {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
 .app {
   /*text-align: center;*/
   height: 100%;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 
-  .logo {
-    height: 40px;
-    width: 120px;
-    margin-top: 12px;
-    background: #333;
-    border-radius: 6px;
-    float: left;
+  //.logo {
+  //  height: 40px;
+  //  width: 120px;
+  //  margin-top: 12px;
+  //  background: #333;
+  //  border-radius: 6px;
+  //  float: left;
+  //}
+  //
+  //.layout {
+  //  height: 100%;
+  //}
+
+  .app-header {
+    background-color: black;
+    padding: 16px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
   }
 
-  .layout {
-    height: 100%;
+  .app-content {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    background-color: @layout-body-background;
   }
 
-  .header {
-    position: fixed;
-    width: 100%;
+  .app-logo {
+    height: 48px;
+    width: 48px;
+    margin-right: 16px;
   }
 
-  .body {
-    padding: 0;
-    height: 100%;
-    margin-top: 64px;
+  .app-menu {
+    flex: 1 1 auto;
+    margin: 0 !important;
+    align-self: center;
+  }
+
+  .app-search {
+    align-self: center;
   }
 }
+
+
+
 
 

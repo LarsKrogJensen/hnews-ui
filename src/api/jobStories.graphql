@@ -1,0 +1,6 @@
+#import "./storyFragment.graphql"
+query JobStories($count: Int!) {
+    jobStories(first: $count) {
+       ...StoryItem
+    }
+}

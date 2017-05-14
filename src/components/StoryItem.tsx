@@ -3,6 +3,7 @@ import {Story} from "../api/typings"
 import "./StoryItem.less"
 import {NavLink} from "react-router-dom"
 import {Icon} from "semantic-ui-react"
+import moment = require("moment")
 
 
 interface IStoryItemProps {
@@ -14,15 +15,18 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
         const story = this.props.story
         return (
             <div className="story">
-                <div className="score">
+                <div className="story-score">
                     {story.score}
                 </div>
-                <div className="content">
+                <div className="story-content">
                     {/*<div className="title">{story.title}</div>*/}
-                    <a className="title" href={story.url || ""} target="_blank">{story.title}</a>
-                    <div className="footer">
-                        <div className="user">by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink></div>
-                        <div className="comment">
+                    <a className="story-title" href={story.url || ""} target="_blank">{story.title}</a>
+                    <div className="story-footer">
+                        <div className="story-user">
+                            by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink>
+                        </div>
+                        <div className="story-time">{moment(story.time * 1000).fromNow()}</div>
+                        <div className="story-comment">
                             <NavLink to={`/story/${story.id}`}>
                                 <Icon name="comments"/>{story.descendants} comments
                             </NavLink>
