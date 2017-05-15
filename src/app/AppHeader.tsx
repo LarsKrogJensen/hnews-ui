@@ -14,7 +14,7 @@ class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<an
 
         return (
             <div className="app-header">
-                <img className="app-logo" src={logo} alt="logo" />
+                <img className="app-logo" src={logo} alt="logo"/>
                 <Menu pointing secondary inverted borderless className="app-menu">
                     <Menu.Item name='top' active={location.pathname === '/top'} onClick={this.handleItemClick}/>
                     <Menu.Item name='best' active={location.pathname === '/best'} onClick={this.handleItemClick}/>
@@ -23,13 +23,17 @@ class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<an
                     <Menu.Item name='ask' active={location.pathname === '/ask'} onClick={this.handleItemClick}/>
                     <Menu.Item name='job' active={location.pathname === '/job'} onClick={this.handleItemClick}/>
                 </Menu>
-                <SearchInput />
+                <SearchInput onSelect={this.handleSearchClick}/>
             </div>
         )
     }
 
     private handleItemClick = (e, {name}) => {
         this.props.history.push(`/${name}`)
+    }
+
+    private handleSearchClick = (id: string) => {
+        this.props.history.push(`/story/${id}`)
     }
 
 }

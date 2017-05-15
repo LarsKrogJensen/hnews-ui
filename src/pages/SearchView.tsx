@@ -1,8 +1,8 @@
 import * as React from "react"
-import {Search} from 'semantic-ui-react'
+import {Search, SearchResultProps} from 'semantic-ui-react'
 import {DocumentNode} from "graphql"
-import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
-import {autobind} from "core-decorators"
+import {GraphQLDataProps} from "react-apollo/lib/graphql"
+import {autobind, debounce} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"
@@ -14,7 +14,9 @@ interface ISearchViewProps {
     result: Story[],
     loading: boolean,
     query: string,
-    onSearch: (query: string) => any
+    onSearch: (query: string) => any,
+    onSelect: (id: string) => void
+
 }
 
 class SearchView extends React.Component<ISearchViewProps, {}> {
@@ -30,26 +32,35 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
 
         return (
             <Search icon='search'
-                    open
                     placeholder='Search...'
                     loading={loading}
                     value={query}
                     results={result}
                     aligned="right"
                     onSearchChange={this.handleSearchChange}
+                    onResultSelect={this.handleResultSelect}
                     className="app-search"/>
         )
     }
 
     @autobind
     private handleSearchChange(event: React.MouseEvent<HTMLElement>, value: string) {
-        // event.preventDefault()
         this.props.onSearch(value)
+    }
+
+    @autobind
+    private handleResultSelect(event: React.MouseEvent<HTMLDivElement>, data: SearchResultProps) {
+        //
+        // console.log(data)
+        if (data.id) {
+            this.props.onSelect(data.id.toString())
+        }
     }
 }
 
 interface ISearchInputProps {
-    data?: GraphQLDataProps
+    data?: GraphQLDataProps,
+    onSelect: (id: string) => void
 }
 interface ISearchInputState {
     query: string,
@@ -70,6 +81,7 @@ export default class SearchViewContainer extends React.Component<ISearchInputPro
 
     public render() {
         return <SearchView onSearch={this.onSearch}
+                           onSelect={this.props.onSelect}
                            {...this.state} />
     }
 
@@ -81,6 +93,11 @@ export default class SearchViewContainer extends React.Component<ISearchInputPro
             loading: true,
             query
         }))
+        this.throttleSearch(query)
+    }
+
+    @debounce(300)
+    private throttleSearch(query: string) {
         const options: WatchQueryOptions = {
             query: searchQuery,
             variables: {
@@ -88,12 +105,12 @@ export default class SearchViewContainer extends React.Component<ISearchInputPro
             }
         }
 
-        return apolloClient.query(options)
+        apolloClient.query(options)
             .then((response: ApolloQueryResult<QueryType>) => response.data.search)
             .then(result => this.handleResult(result || []))
             .catch(error => console.error(error))
-
     }
+
 
     private handleResult(result: Story[]) {
         this.setState((prevState, props) => ({
