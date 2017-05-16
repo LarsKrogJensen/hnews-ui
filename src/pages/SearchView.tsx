@@ -6,6 +6,8 @@ import {autobind, debounce} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"
+import StoryItem from "../components/StoryItem"
+import {ReactElement} from "react"
 
 const searchQuery: DocumentNode = require("../api/searchStories.graphql")
 
@@ -37,6 +39,7 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
                     value={query}
                     results={result}
                     aligned="right"
+                    resultRenderer={ (props: SearchResultProps) => this.resultRenderer(props)}
                     onSearchChange={this.handleSearchChange}
                     onResultSelect={this.handleResultSelect}
                     className="app-search"/>
@@ -55,6 +58,16 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
         if (data.id) {
             this.props.onSelect(data.id.toString())
         }
+    }
+
+    @autobind
+    private resultRenderer(props: any): Array<ReactElement<any>> {
+        // const story: Story = {
+        //     id: props["id"].toString,
+        // }
+        const rr: Array<ReactElement<any>> = []
+        rr.push(<StoryItem story={props}/>)
+        return rr;
     }
 }
 
