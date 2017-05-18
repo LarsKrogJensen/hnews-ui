@@ -14,7 +14,7 @@ export default class FeedView extends React.Component<IFeedViewProps, any> {
         const items = stories.map(story => (
             <div key={story.id}>
                 <StoryItem story={story}/>
-                <Divider />
+                <Divider style={{margin: 8}} />
             </div>
         ))
         return (

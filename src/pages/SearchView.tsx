@@ -1,13 +1,13 @@
 import * as React from "react"
-import {Search, SearchResultProps} from 'semantic-ui-react'
+import {Icon, Search, SearchResultProps} from 'semantic-ui-react'
 import {DocumentNode} from "graphql"
 import {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {autobind, debounce} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"
-import StoryItem from "../components/StoryItem"
 import {ReactElement} from "react"
+import moment = require("moment")
 
 const searchQuery: DocumentNode = require("../api/searchStories.graphql")
 
@@ -62,12 +62,23 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
 
     @autobind
     private resultRenderer(props: any): Array<ReactElement<any>> {
-        // const story: Story = {
-        //     id: props["id"].toString,
-        // }
+        const story: Story = props
         const rr: Array<ReactElement<any>> = []
-        rr.push(<StoryItem story={props}/>)
-        return rr;
+        rr.push(
+            <div className="story">
+                <div className="story-score">{story.score}</div>
+                <div className="story-content">
+                    <div className="story-title">{story.title}</div>
+                    <div className="story-footer">
+                        <div className="story-user"> by {story.by.id} </div>
+                        <div className="story-time">{moment(story.time * 1000).fromNow()}</div>
+                        <div className="story-comment"><Icon name="comments"/>{story.descendants} comments
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+        return rr
     }
 }
 

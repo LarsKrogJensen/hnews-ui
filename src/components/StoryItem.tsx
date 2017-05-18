@@ -19,7 +19,6 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
                     {story.score}
                 </div>
                 <div className="story-content">
-                    {/*<div className="title">{story.title}</div>*/}
                     <a className="story-title" href={story.url || ""} target="_blank">{story.title}</a>
                     <div className="story-footer">
                         <div className="story-user">
