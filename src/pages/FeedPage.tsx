@@ -17,6 +17,6 @@ export default class FeedPage extends React.Component<IFeedPageProps, {}> {
         const loading: boolean = data.loading
         const stories: Story[] = data[this.props.feed] || []
 
-        return <FeedView loading={loading} stories={stories}/>
+        return <FeedView loading={data.networkStatus === 1} stories={stories}/>
     }
 }

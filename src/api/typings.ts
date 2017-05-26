@@ -69,3 +69,13 @@ export interface User {
   id: string;
   about: string | null;
 }
+
+export interface SubscriptionRoot {
+  timeSub: Time;
+}
+
+export interface Time {
+  hour: number;
+  min: number;
+  sec: number;
+}

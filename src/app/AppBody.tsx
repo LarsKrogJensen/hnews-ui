@@ -11,6 +11,7 @@ import {
     AskFeedPage,
     JobFeedPage
 } from "../pages/FeedPages"
+import TimePage from "../pages/TimePage"
 
 interface IAppBodyProps {
 }
@@ -38,6 +39,7 @@ class AppBody extends React.Component<IAppBodyProps & RouteComponentProps<any>, 
                         <Route key="5" path="/ask" component={AskFeedPage}/>
                         <Route key="6" path="/job" component={JobFeedPage}/>
                         <Route key="7" path="/story/:id" component={StoryPage}/>
+                        <Route key="8" path="/time" component={TimePage}/>
                     </Switch>
                 </CSSTransitionGroup>
             </div>

@@ -10,14 +10,14 @@
     "start2": "webpack-dev-server -d --history-api-fallback --colors --progress --port 3000",
     "build": "webpack -p --progress --colors",
     "serve": "pushstate-server dist 9000",
-    "gql-gen": "gql-gen --url https://hnews-gql.herokuapp.com/graphql --template typescript-single --out ./src/api/typings.ts"
+    "gql-gen": "gql-gen --url http://localhost:8080/graphql --template typescript-single --out ./src/api/typings.ts"
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/classnames": "^0.0.32",
+    "@types/classnames": "^2.2.0",
     "@types/core-decorators": "^0.10.32",
-    "@types/node": "^7.0.13",
-    "@types/react": "^15.0.23",
+    "@types/node": "^7.0.22",
+    "@types/react": "^15.0.25",
     "@types/react-dom": "^15.5.0",
     "@types/react-router": "^4.0.6",
     "@types/react-router-dom": "^4.0.4",
@@ -25,7 +25,7 @@
     "@types/webpack": "^2.2.15",
     "@types/webpack-env": "^1.13.0",
     "awesome-typescript-loader": "^3.1.3",
-    "css-loader": "^0.28.1",
+    "css-loader": "^0.28.3",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.11.1",
     "graphql-code-generator": "^0.5.1",
@@ -39,15 +39,15 @@
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.3.1",
     "postcss-reporter": "^3.0.0",
-    "postcss-url": "^6.0.4",
+    "postcss-url": "^6.1.0",
     "react-hot-loader": "next",
-    "style-loader": "^0.17.0",
-    "tslint": "^5.1.0",
+    "style-loader": "^0.18.1",
+    "tslint": "^5.3.2",
     "tslint-loader": "^3.5.3",
     "tslint-react": "^3.0.0",
-    "typescript": "^2.3.2",
+    "typescript": "^2.3.3",
     "url-loader": "^0.5.7",
-    "webpack": "^2.4.1",
+    "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5",
     "webpack-hot-middleware": "^2.17.0"
   },
@@ -55,7 +55,7 @@
     "apollo-client": "^1.1.1",
     "core-decorators": "^0.19.0",
     "flexbox-react": "^4.3.3",
-    "graphql-tag": "^2.0.0",
+    "graphql-tag": "^2.2.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
@@ -65,6 +65,7 @@
     "react-transition-group": "^1.1.3",
     "rxjs": "^5.4.0",
     "semantic-ui-css": "^2.2.10",
-    "semantic-ui-react": "^0.68.3"
+    "semantic-ui-react": "^0.68.3",
+    "subscriptions-transport-ws": "^0.6.0"
   }
 }

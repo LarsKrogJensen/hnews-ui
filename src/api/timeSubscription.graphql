@@ -1,0 +1,7 @@
+subscription Time {
+    timeSub {
+        hour
+        min
+        sec
+    }
+}

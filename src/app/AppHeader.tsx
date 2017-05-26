@@ -22,6 +22,7 @@ class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<an
                     <Menu.Item name='show' active={location.pathname === '/show'} onClick={this.handleItemClick}/>
                     <Menu.Item name='ask' active={location.pathname === '/ask'} onClick={this.handleItemClick}/>
                     <Menu.Item name='job' active={location.pathname === '/job'} onClick={this.handleItemClick}/>
+                    <Menu.Item name='time' active={location.pathname === '/time'} onClick={this.handleItemClick}/>
                 </Menu>
                 <SearchInput onSelect={this.handleSearchClick}/>
             </div>

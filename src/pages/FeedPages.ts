@@ -14,17 +14,18 @@ const connectFeed = (feed: string, query: DocumentNode) => {
         {
             options: {
                 notifyOnNetworkStatusChange: true,
+                pollInterval: 10000,
                 variables: {
                     count: 100
                 },
             },
             props: (p) => ({...p, feed})
-        })
+        })(FeedPage)
 }
 
-export const TopFeedPage = connectFeed("topStories", topStoriesQuery)(FeedPage)
-export const NewFeedPage = connectFeed("newStories", newStoriesQuery)(FeedPage)
-export const BestFeedPage = connectFeed("bestStories", bestStoriesQuery)(FeedPage)
-export const AskFeedPage = connectFeed("askStories", askStoriesQuery)(FeedPage)
-export const ShowFeedPage = connectFeed("showStories", showStoriesQuery)(FeedPage)
-export const JobFeedPage = connectFeed("jobStories", jobStoriesQuery)(FeedPage)
+export const TopFeedPage = connectFeed("topStories", topStoriesQuery)
+export const NewFeedPage = connectFeed("newStories", newStoriesQuery)
+export const BestFeedPage = connectFeed("bestStories", bestStoriesQuery)
+export const AskFeedPage = connectFeed("askStories", askStoriesQuery)
+export const ShowFeedPage = connectFeed("showStories", showStoriesQuery)
+export const JobFeedPage = connectFeed("jobStories", jobStoriesQuery)

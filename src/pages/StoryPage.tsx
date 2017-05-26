@@ -3,7 +3,7 @@ import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
 import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {Story, Comment as CommentItem} from "../api/typings"
-import {Loader, Header, Comment} from "semantic-ui-react"
+import {Accordion, Loader, Header, Comment} from "semantic-ui-react"
 import * as moment from "moment"
 const storyQuery: DocumentNode = require("../api/fullStory.graphql")
 
@@ -56,7 +56,7 @@ class StoryPage extends React.Component<IStoryPageProps, {}> {
     private renderComment(comment: CommentItem) {
 
         const html = {__html: comment.text || ""}
-        const by = comment.by ? comment.by.id : "na"
+        const by = comment.by ? comment.by.id : "deleted?"
         return (
             <Comment key={comment.id}>
                 <Comment.Content>
@@ -71,6 +71,7 @@ class StoryPage extends React.Component<IStoryPageProps, {}> {
                         <a>Reply</a>
                     </Comment.Actions>
                 </Comment.Content>
+                
                 {this.renderComments(comment.comments)}
             </Comment>
         )
