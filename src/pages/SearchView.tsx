@@ -18,7 +18,6 @@ interface ISearchViewProps {
     query: string,
     onSearch: (query: string) => any,
     onSelect: (id: string) => void
-
 }
 
 class SearchView extends React.Component<ISearchViewProps, {}> {
@@ -144,5 +143,3 @@ export default class SearchViewContainer extends React.Component<ISearchInputPro
         }))
     }
 }
-
-
