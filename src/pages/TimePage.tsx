@@ -18,10 +18,12 @@ class TimePage extends React.Component<ITimePageProps, {}> {
 
     public render() {
         const data = this.props.data
+        const time = data.time || {}
 
+        console.log("render")
         return (
             <div style={{padding: 16}}>
-                Time
+                Time {time.hour} - {time.min} - {time.sec}
             </div>
         )
     }

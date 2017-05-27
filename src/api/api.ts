@@ -4,7 +4,7 @@ import {SubscriptionClient, addGraphQLSubscriptions} from 'subscriptions-transpo
 import {API_URL} from "./apiConf"
 
 
-const wsClient = new SubscriptionClient('ws://localhost:8080/graphqlws')
+const wsClient = new SubscriptionClient('ws://localhost:8080/subscriptions', {reconnect: true})
 
 const networkInterface = createNetworkInterface({
     opts: {
