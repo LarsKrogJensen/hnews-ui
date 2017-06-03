@@ -1,21 +1,19 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
-import {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {Story} from "../api/typings"
 import FeedView from "../components/FeedView"
+import {QueryProps} from "react-apollo"
 
-
-interface IFeedPageProps extends RouteComponentProps<void> {
+export interface IFeedPageProps extends RouteComponentProps<void> {
     feed: string
-    data: GraphQLDataProps
+    data: QueryProps
 }
 
 export default class FeedPage extends React.Component<IFeedPageProps, {}> {
     public render() {
 
-        const data: GraphQLDataProps = this.props.data
-        const loading: boolean = data.loading
-        const stories: Story[] = data[this.props.feed] || []
+        const {data, feed} = this.props
+        const stories: Story[] = data[feed] || []
 
         return <FeedView loading={data.networkStatus === 1} stories={stories}/>
     }

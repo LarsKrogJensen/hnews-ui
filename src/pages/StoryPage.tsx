@@ -2,8 +2,7 @@ import * as React from "react"
 import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
 
-import {graphql} from "react-apollo"
-import {GraphQLDataProps} from "react-apollo/lib/graphql"
+import {graphql, QueryProps} from "react-apollo"
 import {Story, Comment as CommentItem} from "../api/typings"
 import {Accordion, Loader, Header, Comment} from "semantic-ui-react"
 import * as moment from "moment"
@@ -15,7 +14,7 @@ interface IStoryProvider {
 }
 
 interface IStoryPageProps extends RouteComponentProps<any> {
-    data: GraphQLDataProps & IStoryProvider
+    data: QueryProps & IStoryProvider
 }
 
 class StoryPage extends React.Component<IStoryPageProps, {}> {
@@ -84,7 +83,6 @@ const StoryPageWithData: React.StatelessComponent<IStoryPageProps> = props => {
     const Wrapped = graphql(storyQuery,
         {
             options: {
-                notifyOnNetworkStatusChange: true,
                 variables: {
                     id: props.match.params["id"]
                 }

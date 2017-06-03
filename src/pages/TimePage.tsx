@@ -1,7 +1,7 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
-import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
+import {graphql, QueryProps} from "react-apollo"
 import {Time} from "../api/typings"
 const timeSubscription: DocumentNode = require("../api/timeSubscription.graphql")
 
@@ -11,7 +11,7 @@ interface ITimeProvider {
 }
 
 interface ITimePageProps extends RouteComponentProps<any> {
-    data: GraphQLDataProps & ITimeProvider
+    data: QueryProps & ITimeProvider
 }
 
 class TimePage extends React.Component<ITimePageProps, {}> {
@@ -29,9 +29,4 @@ class TimePage extends React.Component<ITimePageProps, {}> {
     }
 }
 
-export default graphql(timeSubscription,
-    {
-        options: {
-            notifyOnNetworkStatusChange: true,
-        }
-    })(TimePage)
+export default graphql<ITimeProvider, ITimePageProps>(timeSubscription)(TimePage)

@@ -1,6 +1,6 @@
 import {DocumentNode} from "graphql"
 import {graphql} from "react-apollo"
-import FeedPage from "./FeedPage"
+import FeedPage, {IFeedPageProps} from "./FeedPage"
 const topStoriesQuery: DocumentNode = require("../api/topStories.graphql")
 const newStoriesQuery: DocumentNode = require("../api/newStories.graphql")
 const bestStoriesQuery: DocumentNode = require("../api/bestStories.graphql")
@@ -10,10 +10,9 @@ const jobStoriesQuery: DocumentNode = require("../api/jobStories.graphql")
 
 
 const connectFeed = (feed: string, query: DocumentNode) => {
-    return graphql(query,
+    return graphql<{}, IFeedPageProps>(query,
         {
             options: {
-                notifyOnNetworkStatusChange: true,
                 pollInterval: 10000,
                 variables: {
                     count: 100

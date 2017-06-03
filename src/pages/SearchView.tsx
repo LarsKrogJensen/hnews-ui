@@ -1,7 +1,6 @@
 import * as React from "react"
 import {Icon, Search, SearchResultProps} from 'semantic-ui-react'
 import {DocumentNode} from "graphql"
-import {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {autobind, debounce} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
@@ -82,8 +81,7 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
 }
 
 interface ISearchInputProps {
-    data?: GraphQLDataProps,
-    onSelect: (id: string) => void
+     onSelect: (id: string) => void
 }
 interface ISearchInputState {
     query: string,
