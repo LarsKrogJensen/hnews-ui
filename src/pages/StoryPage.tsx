@@ -1,7 +1,9 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
-import graphql, {GraphQLDataProps} from "react-apollo/lib/graphql"
+
+import {graphql} from "react-apollo"
+import {GraphQLDataProps} from "react-apollo/lib/graphql"
 import {Story, Comment as CommentItem} from "../api/typings"
 import {Accordion, Loader, Header, Comment} from "semantic-ui-react"
 import * as moment from "moment"
@@ -71,7 +73,7 @@ class StoryPage extends React.Component<IStoryPageProps, {}> {
                         <a>Reply</a>
                     </Comment.Actions>
                 </Comment.Content>
-                
+
                 {this.renderComments(comment.comments)}
             </Comment>
         )

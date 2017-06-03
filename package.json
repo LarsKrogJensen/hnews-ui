@@ -54,8 +54,8 @@
   "dependencies": {
     "apollo-client": "^1.1.1",
     "core-decorators": "^0.19.0",
-    "flexbox-react": "^4.3.3",
-    "graphql-tag": "^2.2.0",
+    "flexbox-react": "^4.4.0",
+    "graphql-tag": "^2.2.1",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
