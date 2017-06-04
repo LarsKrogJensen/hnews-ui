@@ -59,6 +59,7 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
         }
     }
 
+    
     @autobind
     private resultRenderer(props: any): Array<ReactElement<any>> {
         const story: Story = props
