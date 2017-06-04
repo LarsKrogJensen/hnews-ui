@@ -6,7 +6,8 @@ import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"
 import {ReactElement} from "react"
-import moment = require("moment")
+import {unix} from "moment"
+
 
 const searchQuery: DocumentNode = require("../api/searchStories.graphql")
 
@@ -69,7 +70,7 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
                     <div className="story-title">{story.title}</div>
                     <div className="story-footer">
                         <div className="story-user"> by {story.by.id} </div>
-                        <div className="story-time">{moment(story.time * 1000).fromNow()}</div>
+                        <div className="story-time">{unix(story.time).fromNow()}</div>
                         <div className="story-comment"><Icon name="comments"/>{story.descendants} comments
                         </div>
                     </div>

@@ -3,7 +3,7 @@ import {Story} from "../api/typings"
 import "./StoryItem.less"
 import {NavLink} from "react-router-dom"
 import {Icon} from "semantic-ui-react"
-import moment = require("moment")
+import {unix} from "moment"
 
 
 interface IStoryItemProps {
@@ -22,7 +22,7 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
                     <a className="story-title" href={story.url || ""} target="_blank">{story.title}</a>
                     <div className="story-footer">
                         {this.renderUser(story)}
-                        <div className="story-time">{moment(story.time * 1000).fromNow()}</div>
+                        <div className="story-time">{unix(story.time).fromNow()}</div>
                         <div className="story-comment">
                             <NavLink to={`/story/${story.id}`}>
                                 <Icon name="comments"/>{story.descendants} comments
