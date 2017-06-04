@@ -1,20 +1,34 @@
 import * as React from "react"
 import {RouteComponentProps} from "react-router"
 import {Story} from "../api/typings"
-import FeedView from "../components/FeedView"
-import {QueryProps} from "react-apollo"
+
+import StoryItem from "../components/StoryItem"
+import {Divider, Loader, Feed} from "semantic-ui-react"
 
 export interface IFeedPageProps extends RouteComponentProps<void> {
-    feed: string
-    data: QueryProps
+    loading: boolean
+    stories: Story[]
 }
 
 export default class FeedPage extends React.Component<IFeedPageProps, {}> {
     public render() {
 
-        const {data, feed} = this.props
-        const stories: Story[] = data[feed] || []
+        const {loading, stories} = this.props
 
-        return <FeedView loading={data.networkStatus === 1} stories={stories}/>
+        const items = stories.map(story => (
+            <div key={story.id}>
+                <StoryItem story={story}/>
+                <Divider style={{margin: 8}}/>
+            </div>
+        ))
+        return (
+
+            <div style={{padding: 16}}>
+                <Loader active={loading} inline='centered'/>
+                <Feed>
+                    {items}
+                </Feed>
+            </div>
+        )
     }
 }

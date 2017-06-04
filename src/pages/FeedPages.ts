@@ -1,6 +1,7 @@
 import {DocumentNode} from "graphql"
-import {graphql} from "react-apollo"
+import {graphql, OptionProps} from "react-apollo"
 import FeedPage, {IFeedPageProps} from "./FeedPage"
+import {Story} from "../api/typings"
 const topStoriesQuery: DocumentNode = require("../api/topStories.graphql")
 const newStoriesQuery: DocumentNode = require("../api/newStories.graphql")
 const bestStoriesQuery: DocumentNode = require("../api/bestStories.graphql")
@@ -18,7 +19,11 @@ const connectFeed = (feed: string, query: DocumentNode) => {
                     count: 100
                 },
             },
-            props: (p) => ({...p, feed})
+            props: (p) => {
+                const loading = p.data ? p.data.networkStatus === 1 : false
+                const stories: Story[] = p.data ? p.data[feed] || [] : []
+                return {loading, stories}
+            }
         })(FeedPage)
 }
 
