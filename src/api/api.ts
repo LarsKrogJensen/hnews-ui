@@ -1,16 +1,21 @@
 import ApolloClient, {createNetworkInterface} from 'apollo-client'
 import {SubscriptionClient, addGraphQLSubscriptions} from 'subscriptions-transport-ws'
 
-import {API_URL} from "./apiConf"
+import {API_URL, WS_URL} from "./apiConf"
 
 
-const wsClient = new SubscriptionClient('ws://localhost:8080/subscriptions', {reconnect: true})
+const wsClient = new SubscriptionClient(WS_URL(), {
+    connectionParams: {
+        authToken: "lars",
+    },
+    reconnect: true,
+})
 
 const networkInterface = createNetworkInterface({
     opts: {
         credentials: 'same-origin',
     },
-    uri: API_URL + '/graphql',
+    uri: API_URL(),
 })
 
 const networkInterfaceWithSubscriptions = addGraphQLSubscriptions(

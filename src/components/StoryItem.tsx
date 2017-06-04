@@ -21,9 +21,7 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
                 <div className="story-content">
                     <a className="story-title" href={story.url || ""} target="_blank">{story.title}</a>
                     <div className="story-footer">
-                        <div className="story-user">
-                            by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink>
-                        </div>
+                        {this.renderUser(story)}
                         <div className="story-time">{moment(story.time * 1000).fromNow()}</div>
                         <div className="story-comment">
                             <NavLink to={`/story/${story.id}`}>
@@ -32,6 +30,17 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
                         </div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    private renderUser(story: Story) {
+        if (!story.by) {
+            return null
+        }
+        return (
+            <div className="story-user">
+                by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink>
             </div>
         )
     }
