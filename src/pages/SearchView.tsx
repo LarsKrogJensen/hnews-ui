@@ -1,7 +1,8 @@
 import * as React from "react"
 import {Icon, Search, SearchResultProps} from 'semantic-ui-react'
 import {DocumentNode} from "graphql"
-import {autobind, debounce} from "core-decorators"
+import {debounce} from "lodash-decorators"
+import {autobind} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"

@@ -57,6 +57,7 @@
     "core-decorators": "^0.19.0",
     "flexbox-react": "^4.4.0",
     "graphql-tag": "^2.4.2",
+    "lodash-decorators": "^4.3.5",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
