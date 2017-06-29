@@ -3,6 +3,7 @@
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
+//    "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -17,7 +18,8 @@
     "lib": [
       "es6",
       "es7",
-      "dom"
+      "dom",
+      "esnext"
     ]
   },
   "exclude": [
