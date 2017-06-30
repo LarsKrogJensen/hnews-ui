@@ -66,27 +66,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'graphql-tag/loader'
             },
-            // // css
-            // {
-            //     test: /\.css$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: 'style-loader',
-            //         use: [
-            //             {
-            //                 loader: 'css-loader',
-            //                 query: {
-            //                     // modules: true,
-            //                     sourceMap: !isProduction,
-            //                     importLoaders: 1,
-            //                     localIdentName: '[local]__[hash:base64:5]'
-            //                 }
-            //             },
-            //             {
-            //                 loader: 'postcss-loader'
-            //             }
-            //         ]
-            //     })
-            // },
+
             // less
             {
                 test: /\.less$/,
@@ -120,18 +100,7 @@ module.exports = {
     plugins: [
         new webpack.LoaderOptionsPlugin({
             options: {
-                context: sourcePath,
-                // postcss: [
-                //     require('postcss-import')({addDependencyTo: webpack}),
-                //     require('postcss-url')(),
-                //     require('postcss-cssnext')(),
-                //     require('postcss-reporter')(),
-                //     require('postcss-browser-reporter')({disabled: isProduction})
-                // ],
-                // tslint: {
-                //     emitErrors: true,
-                //     failOnHint: true
-                // }
+                context: sourcePath
             }
         }),
         new webpack.optimize.CommonsChunkPlugin({
