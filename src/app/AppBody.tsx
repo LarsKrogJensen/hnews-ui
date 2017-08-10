@@ -1,17 +1,11 @@
-import * as React from 'react'
-import {Route, Redirect, Switch} from "react-router-dom"
+import * as React from "react"
+import {Redirect, Route, Switch} from "react-router-dom"
 import StoryPage from "../pages/StoryPage"
 import {RouteComponentProps, withRouter} from "react-router"
-import * as CSSTransitionGroup from "react-transition-group/CSSTransitionGroup"
-import {
-    TopFeedPage,
-    NewFeedPage,
-    BestFeedPage,
-    ShowFeedPage,
-    AskFeedPage,
-    JobFeedPage
-} from "../pages/FeedPages"
+// import {TransitionGroup} from "react-transition-group"
+import {AskFeedPage, BestFeedPage, JobFeedPage, NewFeedPage, ShowFeedPage, TopFeedPage} from "../pages/FeedPages"
 import TimePage from "../pages/TimePage"
+// import TransitionGroup from "react-transition-group/TransitionGroup"
 
 interface IAppBodyProps {
 }
@@ -24,24 +18,23 @@ class AppBody extends React.Component<IAppBodyProps & RouteComponentProps<any>, 
         console.log("Animate key: " + path)
         return (
             <div className="app-content">
-                <CSSTransitionGroup
-                    transitionAppear={true}
-                    transitionAppearTimeout={300}
-                    transitionEnterTimeout={300}
-                    transitionLeave={false}
-                    transitionName="slide">
+                {/*<TransitionGroup*/}
+                    {/*appear={true}*/}
+                    {/*timeout={{ enter: 500, exit: 300 }}*/}
+                    {/*leave={false}*/}
+                    {/*classNames="slide">*/}
                     <Switch key={path} location={location}>
                         <Redirect exact path="/" to="/top"/>
-                        <Route key="1" path="/top" component={TopFeedPage}/>
-                        <Route key="2" path="/best" component={BestFeedPage}/>
-                        <Route key="3" path="/new" component={NewFeedPage}/>
-                        <Route key="4" path="/show" component={ShowFeedPage}/>
-                        <Route key="5" path="/ask" component={AskFeedPage}/>
-                        <Route key="6" path="/job" component={JobFeedPage}/>
-                        <Route key="7" path="/story/:id" component={StoryPage}/>
-                        <Route key="8" path="/time" component={TimePage}/>
+                        <Route path="/top" component={TopFeedPage}/>
+                        <Route path="/best" component={BestFeedPage}/>
+                        <Route path="/new" component={NewFeedPage}/>
+                        <Route path="/show" component={ShowFeedPage}/>
+                        <Route path="/ask" component={AskFeedPage}/>
+                        <Route path="/job" component={JobFeedPage}/>
+                        <Route path="/story/:id" component={StoryPage}/>
+                        <Route path="/time" component={TimePage}/>
                     </Switch>
-                </CSSTransitionGroup>
+                {/*</TransitionGroup>*/}
             </div>
         )
     }

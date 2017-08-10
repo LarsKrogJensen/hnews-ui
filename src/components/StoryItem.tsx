@@ -35,10 +35,10 @@ export default class StoryItem extends React.Component<IStoryItemProps, {}> {
     }
 
     private renderUser(story: Story) {
-        if (!story.by) {
-            return null
-        }
-        return (
+        // if (!story.by) {
+        //     return null
+        // }
+        return ( story.by &&
             <div className="story-user">
                 by <NavLink to={`/user/${story.by.id}`}>{story.by.id}</NavLink>
             </div>

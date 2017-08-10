@@ -1,12 +1,12 @@
 import * as React from "react"
-import {Icon, Search, SearchResultProps} from 'semantic-ui-react'
+import {ReactElement} from "react"
+import {Icon, Search, SearchProps, SearchResultProps} from 'semantic-ui-react'
 import {DocumentNode} from "graphql"
 import {debounce} from "lodash-decorators"
 import {autobind} from "core-decorators"
 import {QueryType, Story} from "../api/typings"
 import apolloClient from "../api/api"
 import {ApolloQueryResult, WatchQueryOptions} from "apollo-client"
-import {ReactElement} from "react"
 import {unix} from "moment"
 
 
@@ -39,7 +39,7 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
                     value={query}
                     results={result}
                     aligned="right"
-                    resultRenderer={ (props: SearchResultProps) => this.resultRenderer(props)}
+                    resultRenderer={(props: SearchResultProps) => this.resultRenderer(props)}
                     onSearchChange={this.handleSearchChange}
                     onResultSelect={this.handleResultSelect}
                     className="app-search"/>
@@ -47,20 +47,22 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
     }
 
     @autobind
-    private handleSearchChange(event: React.MouseEvent<HTMLElement>, value: string) {
-        this.props.onSearch(value)
+    private handleSearchChange(event: React.MouseEvent<HTMLDivElement>, data: SearchProps) {
+        if (data.value) {
+            this.props.onSearch(data.value)
+        }
     }
 
     @autobind
     private handleResultSelect(event: React.MouseEvent<HTMLDivElement>, data: SearchResultProps) {
         //
         // console.log(data)
-        if (data.id) {
-            this.props.onSelect(data.id.toString())
+        if (data && data.result && data.result.id) {
+            this.props.onSelect(data.result.id.toString())
         }
     }
 
-    
+
     @autobind
     private resultRenderer(props: any): Array<ReactElement<any>> {
         const story: Story = props
@@ -84,8 +86,9 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
 }
 
 interface ISearchInputProps {
-     onSelect: (id: string) => void
+    onSelect: (id: string) => void
 }
+
 interface ISearchInputState {
     query: string,
     loading: boolean,

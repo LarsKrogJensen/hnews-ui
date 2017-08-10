@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import apolloClient from "../api/api"
-import ApolloProvider from "react-apollo/src/ApolloProvider"
+import {ApolloProvider} from "react-apollo"
 import {HashRouter as Router} from 'react-router-dom'
 import App from './App'
 import {AppContainer} from 'react-hot-loader'

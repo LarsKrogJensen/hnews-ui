@@ -19,9 +19,9 @@ const connectFeed = (feed: string, query: DocumentNode) => {
                     count: 100
                 },
             },
-            props: (p) => {
-                const loading = p.data ? p.data.networkStatus === 1 : false
-                const stories: Story[] = p.data ? p.data[feed] || [] : []
+            props: ({data}) => {
+                const loading = data ? data.networkStatus === 1 : false
+                const stories: Story[] = data ? data[feed] || [] : []
                 return {loading, stories}
             }
         })(FeedPage)
