@@ -40,6 +40,6 @@ class AppBody extends React.Component<IAppBodyProps & RouteComponentProps<any>, 
     }
 }
 
-const AppBodyWithRouter = withRouter(AppBody)
+const AppBodyWithRouter: React.ComponentClass<IAppBodyProps> = withRouter(AppBody)
 export default AppBodyWithRouter
 

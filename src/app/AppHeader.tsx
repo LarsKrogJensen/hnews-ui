@@ -40,6 +40,6 @@ class AppHeader extends React.Component<IAppHeaderProps & RouteComponentProps<an
 
 }
 
-const AppHeaderWithRouter = withRouter(AppHeader)
+const AppHeaderWithRouter: React.ComponentClass<IAppHeaderProps> = withRouter(AppHeader)
 
 export default AppHeaderWithRouter

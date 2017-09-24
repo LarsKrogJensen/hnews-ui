@@ -9,6 +9,7 @@ const wsClient = new SubscriptionClient(WS_URL(), {
         authToken: "lars",
     },
     reconnect: true,
+    timeout: 30,
 })
 
 const networkInterface = createNetworkInterface({
@@ -27,5 +28,6 @@ const apolloClient = new ApolloClient({
     connectToDevTools: true,
     networkInterface: networkInterfaceWithSubscriptions,
 })
+
 
 export default apolloClient

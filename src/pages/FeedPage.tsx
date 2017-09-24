@@ -3,7 +3,7 @@ import {RouteComponentProps} from "react-router"
 import {Story} from "../api/typings"
 
 import StoryItem from "../components/StoryItem"
-import {Divider, Loader, Feed} from "semantic-ui-react"
+import {Divider, Feed, Loader} from "semantic-ui-react"
 
 export interface IFeedPageProps extends RouteComponentProps<void> {
     loading: boolean
@@ -22,7 +22,6 @@ export default class FeedPage extends React.Component<IFeedPageProps, {}> {
             </div>
         ))
         return (
-
             <div style={{padding: 16}}>
                 <Loader active={loading} inline='centered'/>
                 <Feed>
