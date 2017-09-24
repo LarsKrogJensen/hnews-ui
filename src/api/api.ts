@@ -9,7 +9,7 @@ const wsClient = new SubscriptionClient(WS_URL(), {
         authToken: "lars",
     },
     reconnect: true,
-    timeout: 30,
+    // timeout: 30,
 })
 
 const networkInterface = createNetworkInterface({
