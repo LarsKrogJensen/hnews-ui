@@ -10,7 +10,7 @@
     "start2": "webpack-dev-server -d --history-api-fallback --colors --progress --port 3000",
     "build": "webpack -p --progress --colors",
     "serve": "pushstate-server build 9000",
-    "gql-gen": "gql-gen --url http://localhost:8080/graphql --template typescript-single --out ./src/api/typings.ts",
+    "gql-gen": "gql-gen --url http://localhost:8080/graphql --template typescript-single --out ./src/api/typings.ts ./src/**/*.graphql",
     "postinstall": "rm -rf node_modules/@types/async ## hack until AsycIterator issues are resolved"
   },
   "license": "MIT",

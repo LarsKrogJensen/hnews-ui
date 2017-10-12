@@ -23,7 +23,6 @@ module.exports = {
             'react-dom',
             'react-router',
             'semantic-ui-react',
-            'semantic-ui-css',
             'react-apollo',
             'apollo-client'
         ]

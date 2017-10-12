@@ -68,12 +68,12 @@ class SearchView extends React.Component<ISearchViewProps, {}> {
         const story: Story = props
         const rr: Array<ReactElement<any>> = []
         rr.push(
-            <div className="story">
+            <div key={story.id} className="story">
                 <div className="story-score">{story.score}</div>
                 <div className="story-content">
                     <div className="story-title">{story.title}</div>
                     <div className="story-footer">
-                        <div className="story-user"> by {story.by.id} </div>
+                        <div className="story-user"> by {story.by && story.by.id || "unknown"} </div>
                         <div className="story-time">{unix(story.time).fromNow()}</div>
                         <div className="story-comment"><Icon name="comments"/>{story.descendants} comments
                         </div>

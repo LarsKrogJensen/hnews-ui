@@ -42,7 +42,7 @@ class StoryPage extends React.Component<IStoryPageProps, {}> {
         )
     }
 
-    private renderComments(comments: CommentItem[] | null, header: JSX.Element | null = null) {
+    private renderComments(comments?: CommentItem[], header: JSX.Element | null = null) {
         if (!comments || comments.length === 0) {
             return null
         }
