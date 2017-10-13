@@ -3,9 +3,11 @@ import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
 
 import {graphql, QueryProps} from "react-apollo"
-import {Story, Comment as CommentItem} from "../api/typings"
-import {Accordion, Loader, Header, Comment} from "semantic-ui-react"
+import {Comment as CommentItem, Story} from "../api/typings"
+import {Comment, Header, Loader} from "semantic-ui-react"
 import * as moment from "moment"
+// import {Fade, Flip, Rotate, Zoom} from 'react-reveal'
+
 const storyQuery: DocumentNode = require("../api/fullStory.graphql")
 
 

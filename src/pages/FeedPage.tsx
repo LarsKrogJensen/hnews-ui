@@ -24,6 +24,7 @@ export default class FeedPage extends React.Component<IFeedPageProps, {}> {
         return (
             <div style={{padding: 16}}>
                 <Loader active={loading} inline='centered'/>
+
                 <Feed>
                     {items}
                 </Feed>
