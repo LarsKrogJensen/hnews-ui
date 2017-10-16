@@ -93,7 +93,7 @@ module.exports = {
             {test: /\.png$/, use: 'url-loader?limit=10000'},
             {test: /\.jpg$/, use: 'file-loader'},
             {test: /\.svg$/, use: 'url-loader'},
-            { test: /\.(ttf|eot|svg|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'file-loader'}
+            {test: /\.(ttf|eot|svg|woff2?)(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'file-loader'}
         ]
     },
     plugins: [
