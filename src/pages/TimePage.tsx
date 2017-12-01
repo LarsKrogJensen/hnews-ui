@@ -1,24 +1,33 @@
 import * as React from "react"
-import {RouteComponentProps} from "react-router"
 import {DocumentNode} from "graphql"
-import {graphql, QueryProps} from "react-apollo"
+import {graphql, OptionProps} from "react-apollo"
 import {Time} from "../api/typings"
+import {Res} from "awesome-typescript-loader/dist/checker/protocol"
+
 const timeSubscription: DocumentNode = require("../api/timeSubscription.graphql")
 
 
-interface ITimeProvider {
-    time: Time
+interface Response {
+    data: {
+        time: Time
+    }
 }
 
-interface ITimePageProps extends RouteComponentProps<any> {
-    data: QueryProps & ITimeProvider
+interface ExternalProps {
+
 }
 
-class TimePage extends React.Component<ITimePageProps, {}> {
+interface Props {
+    time: Time,
+    loading: boolean
+
+}
+
+
+class TimePage extends React.Component<Props> {
 
     public render() {
-        const data = this.props.data
-        const time = data.time || {}
+        const time = this.props.time || {}
 
         console.log("render")
         return (
@@ -29,4 +38,18 @@ class TimePage extends React.Component<ITimePageProps, {}> {
     }
 }
 
-export default graphql<ITimeProvider, ITimePageProps>(timeSubscription)(TimePage)
+type WrappedProps = Props & ExternalProps
+
+const WithData: React.ComponentClass<ExternalProps> =
+    graphql<Response, ExternalProps, WrappedProps>(timeSubscription, {
+            props: (props: OptionProps<ExternalProps, Response>) => {
+
+                return {
+                    ...props.ownProps,
+                    loading: props.data && props.data.loading,
+                    time: props.data && props.data.data && props.data.data.time
+                }
+            }
+        }
+    )(TimePage)
+export default WithData
