@@ -16,8 +16,10 @@ const retryLink = new RetryLink({
 })
 
 const httpLink = new HttpLink({
-    uri: API_URL
+    uri: API_URL()
 })
+
+const httpWithRetryLink: ApolloLink = ApolloLink.from([retryLink, httpLink])
 
 const wsLink = new WebSocketLink({
     options: {
@@ -36,7 +38,7 @@ const hybridLink = split(
         return node.kind === 'OperationDefinition' && node.operation === 'subscription'
     },
     wsLink,
-    ApolloLink.from([retryLink, httpLink]),
+    httpWithRetryLink
 )
 
 

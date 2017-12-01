@@ -14,7 +14,7 @@ const connectFeed = (feed: string, query: DocumentNode) => {
     return graphql<{}, IFeedPageProps>(query,
         {
             options: {
-                pollInterval: 10000,
+                pollInterval: 5000,
                 variables: {
                     count: 100
                 },
